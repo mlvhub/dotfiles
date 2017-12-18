@@ -1,0 +1,7 @@
+alias v="nvim"
+alias gc="git commit"
+alias gpso="git push origin"
+alias gplo="git pull origin"
+alias ga="git add"
+alias gs="git status"
+alias gl="git log"
