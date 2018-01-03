@@ -24,6 +24,7 @@ Plug 'jceb/vim-hier'
 Plug 'scrooloose/nerdcommenter'
 Plug 'janko-m/vim-test'
 Plug 'trevordmiller/nova-vim'
+Plug 'eugen0329/vim-esearch'
 
 " Themes
 Plug 'morhetz/gruvbox'
