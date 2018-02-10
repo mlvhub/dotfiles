@@ -25,6 +25,10 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'janko-m/vim-test'
 Plug 'trevordmiller/nova-vim'
 Plug 'eugen0329/vim-esearch'
+Plug 'lervag/vimtex'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-dispatch'
 
 " Themes
 Plug 'morhetz/gruvbox'

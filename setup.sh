@@ -1,8 +1,8 @@
-# Link the bash profile
-ln -s $PWD/bash_profile ~/.bash_profile
+# Link the zshrc file
+ln -s $PWD/zshrc ~/.zshrc
 
 # Source the new bash profile
-source ~/.bash_profile
+source ~/.zshrc
 
 # Install vim-plug
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
