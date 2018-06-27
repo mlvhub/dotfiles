@@ -8,7 +8,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/syntastic'
 Plug 'mattn/emmet-vim'
 Plug 'Raimondi/delimitMate'
-Plug '~/.fzf'
+Plug 'kien/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'bling/vim-airline'
 "Plug 'SirVer/ultisnips'

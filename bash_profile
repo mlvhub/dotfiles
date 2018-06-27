@@ -36,3 +36,5 @@ function rnm() {
   WINDOW_NAME=$1
   PROMPT_COMMAND='echo -en "\033]0; $WINDOW_NAME \a"'
 }
+
+export PATH="$HOME/.cargo/bin:$PATH"

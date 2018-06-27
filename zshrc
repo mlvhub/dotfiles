@@ -17,6 +17,8 @@ alias gl="git log"
 alias gb="git branch"
 alias gd="git diff"
 
+export PATH="/Users/miguellopez/protoc/bin:$PATH"
+
 alias curl='noglob curl'
 
 . $HOME/.asdf/asdf.sh
@@ -25,7 +27,8 @@ alias curl='noglob curl'
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
-JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
+export NDK_HOME=/Users/miguellopez/Documents/android/android-ndk-r17
 
 function rnm() {
   WINDOW_NAME=$1
