@@ -1,4 +1,6 @@
-source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
 [ -s "/Users/miguellopez/.jabba/jabba.sh" ] && source "/Users/miguellopez/.jabba/jabba.sh"
 

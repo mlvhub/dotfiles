@@ -2,6 +2,9 @@
 # - zsh
 # - ripgrep
 
+# Link the zpreztorc file
+ln -s $PWD/zpreztorc ~/.zpreztorc
+
 # Link the zshrc file
 ln -s $PWD/zshrc ~/.zshrc
 

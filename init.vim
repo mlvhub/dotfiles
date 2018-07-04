@@ -45,9 +45,9 @@ nnoremap <silent> <cr> :call LanguageClient_textDocument_hover()<cr>
 " Writing
 Plug 'lervag/vimtex'
 Plug 'reedes/vim-pencil'
-Plug 'tpope/vim-markdown'
 Plug 'jtratner/vim-flavored-markdown'
-Plug 'dpelle/LanguageTool'
+Plug 'euclio/vim-markdown-composer'
+Plug 'dpelle/vim-LanguageTool'
 
 " Themes
 Plug 'trevordmiller/nova-vim'
