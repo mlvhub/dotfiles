@@ -22,6 +22,7 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
+Plug 'ervandew/supertab'
 
 Plug 'luochen1990/rainbow'
 Plug 'bling/vim-airline'
@@ -46,7 +47,16 @@ nnoremap <silent> <cr> :call LanguageClient_textDocument_hover()<cr>
 Plug 'lervag/vimtex'
 Plug 'reedes/vim-pencil'
 Plug 'jtratner/vim-flavored-markdown'
-Plug 'euclio/vim-markdown-composer'
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release
+    else
+      !cargo build --release --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 Plug 'dpelle/vim-LanguageTool'
 
 " Themes
@@ -55,6 +65,7 @@ Plug 'trevordmiller/nova-vim'
 " Rust Plugs"
 Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 
 " Scala Plugs"
 Plug 'derekwyatt/vim-scala'
