@@ -62,6 +62,9 @@ Plug 'dpelle/vim-LanguageTool'
 " Themes
 Plug 'trevordmiller/nova-vim'
 
+" Go Plugs
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 " Rust Plugs"
 Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
@@ -69,6 +72,10 @@ Plug 'racer-rust/vim-racer'
 
 " Scala Plugs"
 Plug 'derekwyatt/vim-scala'
+Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
+autocmd BufWritePost *.scala silent :EnTypeCheck
+nnoremap <localleader>t :EnType<CR>
+
 
 " Frontend Plugs"
 Plug 'walm/jshint.vim'

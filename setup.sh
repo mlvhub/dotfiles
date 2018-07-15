@@ -8,7 +8,13 @@ ln -s $PWD/zpreztorc ~/.zpreztorc
 # Link the zshrc file
 ln -s $PWD/zshrc ~/.zshrc
 
-# Source the new bash profile
+# Clone the tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Link the tmux file
+ln -s $PWD/tmux.conf ~/.tmux.conf
+
+# Source the new zsh profile
 source ~/.zshrc
 
 # Install vim-plug
