@@ -6,7 +6,6 @@ fi
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
-export TERM="screen-256color"
 
 alias v="nvim"
 

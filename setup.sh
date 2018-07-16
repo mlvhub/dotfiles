@@ -2,6 +2,10 @@
 # - zsh
 # - ripgrep
 
+# Link the global gitignore file
+ln -s $PWD/gitignore_global ~/.gitignore_global
+git config --global core.excludesfile ~/.gitignore_global
+
 # Link the zpreztorc file
 ln -s $PWD/zpreztorc ~/.zpreztorc
 
