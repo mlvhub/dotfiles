@@ -2,10 +2,23 @@
 # - zsh
 # - ripgrep
 
+# Link the global gitignore file
+ln -s $PWD/gitignore_global ~/.gitignore_global
+git config --global core.excludesfile ~/.gitignore_global
+
+# Link the zpreztorc file
+ln -s $PWD/zpreztorc ~/.zpreztorc
+
 # Link the zshrc file
 ln -s $PWD/zshrc ~/.zshrc
 
-# Source the new bash profile
+# Clone the tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Link the tmux file
+ln -s $PWD/tmux.conf ~/.tmux.conf
+
+# Source the new zsh profile
 source ~/.zshrc
 
 # Install vim-plug

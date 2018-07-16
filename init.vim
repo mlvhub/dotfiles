@@ -14,6 +14,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 nnoremap <C-p> :FZF<cr>
 
+Plug 'w0rp/ale'
+
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -22,6 +24,7 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
+Plug 'ervandew/supertab'
 
 Plug 'luochen1990/rainbow'
 Plug 'bling/vim-airline'
@@ -45,19 +48,51 @@ nnoremap <silent> <cr> :call LanguageClient_textDocument_hover()<cr>
 " Writing
 Plug 'lervag/vimtex'
 Plug 'reedes/vim-pencil'
-Plug 'tpope/vim-markdown'
 Plug 'jtratner/vim-flavored-markdown'
-Plug 'dpelle/LanguageTool'
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release
+    else
+      !cargo build --release --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+Plug 'dpelle/vim-LanguageTool'
 
 " Themes
 Plug 'trevordmiller/nova-vim'
 
+" Go Plugs
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+au FileType go set noexpandtab
+au FileType go set shiftwidth=4
+au FileType go set softtabstop=4
+au FileType go set tabstop=4
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_auto_sameids = 1
+let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 1
+
 " Rust Plugs"
 Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 
 " Scala Plugs"
 Plug 'derekwyatt/vim-scala'
+Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
+autocmd BufWritePost *.scala silent :EnTypeCheck
+nnoremap <localleader>t :EnType<CR>
+
 
 " Frontend Plugs"
 Plug 'walm/jshint.vim'
@@ -80,10 +115,6 @@ call plug#end()
 
 filetype indent on
 filetype plugin on
-
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1 
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
 set t_Co=16
 set mouse=r
@@ -132,11 +163,7 @@ nnoremap <Leader>w :w<CR>
 
 imap <Leader>x <C-\>
 
-let g:ctrlp_cmd = 'CtrlP pwd'
-
 let g:user_emmet_leader_key='<C-Z>'
-
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|platforms|target|dist|www|_build)|(\.(swp|ico|git|svn))$'
 
 "set foldmethod=syntax
 set ignorecase
@@ -156,4 +183,3 @@ set number
 set relativenumber
 set visualbell
 set cursorline
-set background=dark
