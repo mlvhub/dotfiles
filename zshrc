@@ -1,7 +1,5 @@
 source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 
-[ -s "/Users/miguellopez/.jabba/jabba.sh" ] && source "/Users/miguellopez/.jabba/jabba.sh"
-
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
@@ -20,12 +18,6 @@ alias gd="git diff"
 export PATH="/Users/miguellopez/protoc/bin:$PATH"
 
 alias curl='noglob curl'
-
-. $HOME/.asdf/asdf.sh
-
-. $HOME/.asdf/completions/asdf.bash
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
 export NDK_HOME=/Users/miguellopez/Documents/android/android-ndk-r17
