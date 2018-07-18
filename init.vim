@@ -41,6 +41,11 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+let g:LanguageClient_serverCommands = {
+    \ 'reason': ['ocaml-language-server', '--stdio'],
+    \ 'ocaml': ['ocaml-language-server', '--stdio'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ }
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<cr>
 nnoremap <silent> gf :call LanguageClient_textDocument_formatting()<cr>
 nnoremap <silent> <cr> :call LanguageClient_textDocument_hover()<cr>
@@ -85,7 +90,10 @@ let g:go_auto_type_info = 1
 " Rust Plugs"
 Plug 'cespare/vim-toml'
 Plug 'rust-lang/rust.vim'
+let g:autofmt_autosave = 1
 Plug 'racer-rust/vim-racer'
+set hidden
+let g:racer_experimental_completer = 1
 
 " Scala Plugs"
 Plug 'derekwyatt/vim-scala'
@@ -102,10 +110,6 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'claco/jasmine.vim'
 
 Plug 'reasonml-editor/vim-reason-plus'
-let g:LanguageClient_serverCommands = {
-    \ 'reason': ['ocaml-language-server', '--stdio'],
-    \ 'ocaml': ['ocaml-language-server', '--stdio'],
-    \ }
 
 " Elm Plugs"
 Plug 'lambdatoast/elm.vim'
