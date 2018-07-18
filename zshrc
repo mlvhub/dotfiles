@@ -19,6 +19,7 @@ alias gd="git diff"
 
 export PATH="/Users/miguellopez/protoc/bin:$PATH"
 export PATH="/Users/miguellopez/kafka/bin:$PATH"
+export PATH="~/.cargo/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 
 alias curl='noglob curl'
