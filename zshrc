@@ -21,6 +21,7 @@ export PATH="/Users/miguellopez/protoc/bin:$PATH"
 export PATH="/Users/miguellopez/kafka/bin:$PATH"
 export PATH="~/.cargo/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/Downloads/cmake-3.12.0-Linux-x86_64/bin
 
 alias curl='noglob curl'
 
@@ -32,9 +33,13 @@ function rnm() {
   printf "\033];%s\07\n" $WINDOW_NAME
 }
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
