@@ -23,6 +23,8 @@ export PATH="~/.cargo/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/Downloads/cmake-3.12.0-Linux-x86_64/bin
 
+export RUSTC_WRAPPER=sccache
+
 alias curl='noglob curl'
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
