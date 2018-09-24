@@ -17,11 +17,16 @@ alias gl="git log"
 alias gb="git branch"
 alias gd="git diff"
 
+alias tc="clear && tmux clear-history"
+
 export PATH="/Users/miguellopez/protoc/bin:$PATH"
 export PATH="/Users/miguellopez/kafka/bin:$PATH"
 export PATH="~/.cargo/bin:$PATH"
-export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/Downloads/cmake-3.12.0-Linux-x86_64/bin
+export PATH=$PATH:$HOME/.linkerd2/bin
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 export RUSTC_WRAPPER=sccache
 
