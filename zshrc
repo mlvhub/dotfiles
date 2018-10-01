@@ -17,6 +17,7 @@ alias gl="git log"
 alias gb="git branch"
 alias gd="git diff"
 
+alias tmux="tmux -2"
 alias tc="clear && tmux clear-history"
 
 export PATH="/Users/miguellopez/protoc/bin:$PATH"

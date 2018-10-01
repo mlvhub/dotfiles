@@ -120,11 +120,10 @@ call plug#end()
 filetype indent on
 filetype plugin on
 
-set t_Co=16
+set t_Co=256
 set mouse=r
 syntax on
 set background=dark
-let g:solarized_termcolors=16
 silent! colorscheme nova
 
 tnoremap <Leader>h <C-\><C-n><C-w>h
