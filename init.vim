@@ -24,6 +24,7 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
+Plug 'Shougo/denite.nvim'
 Plug 'ervandew/supertab'
 
 Plug 'luochen1990/rainbow'
@@ -71,10 +72,6 @@ Plug 'trevordmiller/nova-vim'
 
 " Go Plugs
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-au FileType go set noexpandtab
-au FileType go set shiftwidth=4
-au FileType go set softtabstop=4
-au FileType go set tabstop=4
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
@@ -86,6 +83,14 @@ let g:go_highlight_types = 1
 let g:go_auto_sameids = 1
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_deadline = "3s"
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 " Rust Plugs"
 Plug 'cespare/vim-toml'
@@ -107,12 +112,13 @@ Plug 'walm/jshint.vim'
 Plug 'moll/vim-node'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'claco/jasmine.vim'
+
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
 Plug 'reasonml-editor/vim-reason-plus'
 
-" Elm Plugs"
-Plug 'lambdatoast/elm.vim'
+Plug 'ElmCast/elm-vim'
 
 " Add plugins to &runtimepath
 call plug#end()
