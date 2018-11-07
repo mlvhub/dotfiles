@@ -70,7 +70,7 @@ Plug 'dpelle/vim-LanguageTool'
 " Themes
 Plug 'trevordmiller/nova-vim'
 
-" Go Plugs
+" Go, Golang Plugs
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -88,8 +88,8 @@ let g:go_metalinter_deadline = "3s"
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
-autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <leader>i <Plug>(go-info)
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 " Rust Plugs"
@@ -132,14 +132,14 @@ syntax on
 set background=dark
 silent! colorscheme nova
 
-tnoremap <Leader>h <C-\><C-n><C-w>h
-tnoremap <Leader>j <C-\><C-n><C-w>j
-tnoremap <Leader>k <C-\><C-n><C-w>k
-tnoremap <Leader>l <C-\><C-n><C-w>l
-nnoremap <Leader>h <C-w>h
-nnoremap <Leader>j <C-w>j
-nnoremap <Leader>k <C-w>k
-nnoremap <Leader>l <C-w>l
+tnoremap <leader>h <C-\><C-n><C-w>h
+tnoremap <leader>j <C-\><C-n><C-w>j
+tnoremap <leader>k <C-\><C-n><C-w>k
+tnoremap <leader>l <C-\><C-n><C-w>l
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
 
 " Completion
 " Use deoplete.
@@ -147,9 +147,9 @@ let g:deoplete#enable_at_startup = 1
 let g:SuperTabDefaultCompletionType = "context"
 
 " vim-test bindings
-nmap <silent> <Leader>tf :TestFile<CR>
-nmap <silent> <Leader>ts :TestSuite<CR>
-nmap <silent> <Leader>tv :TestVisit<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ts :TestSuite<CR>
+nmap <silent> <leader>tv :TestVisit<CR>
 
 let test#strategy = "neovim"
 
@@ -160,17 +160,15 @@ let g:elixir_autobuild = 1
 let g:elixir_showerror = 1
 
 " Remap gitgutter's mappings
-nmap <Leader>ga <Plug>GitGutterStageHunk
-nmap <Leader>gu <Plug>GitGutterRevertHunk
-nmap <Leader>gv <Plug>GitGutterPreviewHunk
+nmap <leader>ga <Plug>GitGutterStageHunk
+nmap <leader>gu <Plug>GitGutterRevertHunk
+nmap <leader>gv <Plug>GitGutterPreviewHunk
 
-:nnoremap <Leader>d :!zeal --query "<cword>"&<CR><CR>
+inoremap <leader>q <Esc>
 
-inoremap <Leader>q <Esc>
+nnoremap <leader>w :w<CR>
 
-nnoremap <Leader>w :w<CR>
-
-imap <Leader>x <C-\>
+imap <leader>x <C-\>
 
 let g:user_emmet_leader_key='<C-Z>'
 
