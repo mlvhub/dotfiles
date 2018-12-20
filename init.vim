@@ -13,6 +13,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 nnoremap <C-p> :FZF<cr>
+let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 Plug 'w0rp/ale'
 
@@ -101,11 +102,23 @@ set hidden
 let g:racer_experimental_completer = 1
 
 " Scala Plugs"
+Plug 'natebosch/vim-lsc'
 Plug 'derekwyatt/vim-scala'
-Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
-autocmd BufWritePost *.scala silent :EnTypeCheck
-nnoremap <localleader>t :EnType<CR>
+au BufRead,BufNewFile *.sbt set filetype=scala
+au BufRead,BufNewFile *.sc set filetype=scala
+Plug 'Chiel92/vim-autoformat'
+noremap <leader>f :Autoformat<CR>
+let g:formatdef_scalafmt = "'scalafmt --stdin'"
+let g:formatters_scala = ['scalafmt']
 
+" Configuration for vim-lsc
+let g:lsc_enable_autocomplete = v:false
+let g:lsc_server_commands = {
+  \ 'scala': 'metals-vim'
+  \}
+let g:lsc_auto_map = {
+    \ 'GoToDefinition': 'gd',
+    \}
 
 " Frontend Plugs"
 Plug 'walm/jshint.vim'
