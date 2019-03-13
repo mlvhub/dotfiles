@@ -21,5 +21,10 @@
 ehthumbs.db
 Thumbs.db
 
+# Tools
+######################
+.idea
+.metals
+
 # Personal
 IgnoreThis*

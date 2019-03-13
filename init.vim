@@ -36,6 +36,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'janko-m/vim-test'
 Plug 'eugen0329/vim-esearch'
 Plug 'easymotion/vim-easymotion'
+Plug 'martinda/Jenkinsfile-vim-syntax'
 "Plug 'tpope/vim-projectionist'
 "Plug 'tpope/vim-dispatch'
 
@@ -108,11 +109,12 @@ au BufRead,BufNewFile *.sbt set filetype=scala
 au BufRead,BufNewFile *.sc set filetype=scala
 Plug 'Chiel92/vim-autoformat'
 noremap <leader>f :Autoformat<CR>
+noremap gb :bd<CR>
 let g:formatdef_scalafmt = "'scalafmt --stdin'"
 let g:formatters_scala = ['scalafmt']
 
 " Configuration for vim-lsc
-let g:lsc_enable_autocomplete = v:false
+"let g:lsc_enable_autocomplete = v:false
 let g:lsc_server_commands = {
   \ 'scala': 'metals-vim'
   \}
