@@ -15,17 +15,10 @@ Plug 'junegunn/fzf.vim'
 nnoremap <C-p> :FZF<cr>
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
+Plug 'jparise/vim-graphql'
+
 Plug 'w0rp/ale'
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
-Plug 'Shougo/denite.nvim'
 Plug 'ervandew/supertab'
 
 Plug 'luochen1990/rainbow'
@@ -39,19 +32,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 "Plug 'tpope/vim-projectionist'
 "Plug 'tpope/vim-dispatch'
-
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-let g:LanguageClient_serverCommands = {
-    \ 'reason': ['ocaml-language-server', '--stdio'],
-    \ 'ocaml': ['ocaml-language-server', '--stdio'],
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ }
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<cr>
-nnoremap <silent> gf :call LanguageClient_textDocument_formatting()<cr>
-nnoremap <silent> <cr> :call LanguageClient_textDocument_hover()<cr>
 
 " Writing
 Plug 'lervag/vimtex'
@@ -100,10 +80,54 @@ Plug 'rust-lang/rust.vim'
 let g:autofmt_autosave = 1
 Plug 'racer-rust/vim-racer'
 set hidden
+set cmdheight=2
 let g:racer_experimental_completer = 1
 
 " Scala Plugs"
-Plug 'natebosch/vim-lsc'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+" always show signcolumns
+set signcolumn=yes
+" Use <c-space> for trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+" Use `[c` and `]c` for navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Remap for do codeAction of current line
+nmap <leader>ac <Plug>(coc-codeaction)
+
+" Remap for do action format
+nnoremap <silent> F :call CocAction('format')<CR>
+
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+autocmd FileType json syntax match Comment +\/\/.\+$+
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+
 Plug 'derekwyatt/vim-scala'
 au BufRead,BufNewFile *.sbt set filetype=scala
 au BufRead,BufNewFile *.sc set filetype=scala
@@ -112,15 +136,6 @@ noremap <leader>f :Autoformat<CR>
 noremap gb :bd<CR>
 let g:formatdef_scalafmt = "'scalafmt --stdin'"
 let g:formatters_scala = ['scalafmt']
-
-" Configuration for vim-lsc
-"let g:lsc_enable_autocomplete = v:false
-let g:lsc_server_commands = {
-  \ 'scala': 'metals-vim'
-  \}
-let g:lsc_auto_map = {
-    \ 'GoToDefinition': 'gd',
-    \}
 
 " Frontend Plugs"
 Plug 'walm/jshint.vim'
@@ -132,6 +147,10 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
 Plug 'reasonml-editor/vim-reason-plus'
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+let g:syntastic_ocaml_checkers = ['merlin']
+
 
 Plug 'ElmCast/elm-vim'
 
