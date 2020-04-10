@@ -1,6 +1,13 @@
 # TODO: List requirements
+# - alacritty
 # - zsh
+# - prezto
+# - neovim
 # - ripgrep
+
+# Link the alacritty config file
+mkdir -p ~/.config/alacritty
+ln -s $PWD/alacritty.yml ~/.config/alacritty/alacritty.yml
 
 # Link the global gitignore file
 ln -s $PWD/gitignore_global ~/.gitignore_global
