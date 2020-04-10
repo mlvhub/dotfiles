@@ -25,7 +25,6 @@ alias tc="clear && tmux clear-history"
 
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=/usr/local/bin:/usr/local/sbin:"$PATH"
-export PATH="/Users/miguellopez/protoc/bin:$PATH"
 export PATH="/Users/miguellopez/kafka/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH=$PATH:~/Downloads/cmake-3.12.0-Linux-x86_64/bin
@@ -35,6 +34,7 @@ export PATH="~/Library/Python/3.7/bin:$PATH"
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+export PATH="/usr/local/go/bin:$PATH"
 
 export RUSTC_WRAPPER=sccache
 export RUST_SRC_PATH=/usr/local/src/rust/src

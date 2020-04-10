@@ -25,6 +25,7 @@ Thumbs.db
 ######################
 .idea
 .metals
+.bloop
 
 # Personal
 IgnoreThis*
