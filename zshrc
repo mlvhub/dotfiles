@@ -29,6 +29,7 @@ export PATH="/Users/miguellopez/kafka/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH=$PATH:~/Downloads/cmake-3.12.0-Linux-x86_64/bin
 export PATH=$PATH:$HOME/.linkerd2/bin
+export PATH=$PATH:/usr/local/lib/ruby/gems/2.7.0/bin
 export PATH="$HOME/.fastlane/bin:$PATH"
 export PATH="~/Library/Python/3.7/bin:$PATH"
 
