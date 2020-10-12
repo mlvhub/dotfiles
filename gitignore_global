@@ -26,6 +26,7 @@ Thumbs.db
 .idea
 .metals
 .bloop
+.bsp
 
 # Personal
 IgnoreThis*

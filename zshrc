@@ -30,6 +30,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH=$PATH:~/Downloads/cmake-3.12.0-Linux-x86_64/bin
 export PATH=$PATH:$HOME/.linkerd2/bin
 export PATH=$PATH:/usr/local/lib/ruby/gems/2.7.0/bin
+export PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
 export PATH="$HOME/.fastlane/bin:$PATH"
 export PATH="~/Library/Python/3.7/bin:$PATH"
 
@@ -42,7 +43,7 @@ export RUST_SRC_PATH=/usr/local/src/rust/src
 
 alias curl='noglob curl'
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home
+export JAVA_HOME=/Users/miguellopez/Library/Caches/Coursier/jvm/adopt@1.8.0-252/Contents/Home
 export NDK_HOME=/Users/miguellopez/Documents/android/android-ndk-r17
 
 function rnm() {
@@ -68,3 +69,4 @@ autoload -U compinit
 fpath=($HOME/.bloop/zsh $fpath)
 compinit
 
+[ -f "/Users/miguellopez/.ghcup/env" ] && source "/Users/miguellopez/.ghcup/env" # ghcup-env

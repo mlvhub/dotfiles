@@ -34,7 +34,6 @@ Plug 'martinda/Jenkinsfile-vim-syntax'
 "Plug 'tpope/vim-dispatch'
 
 " Writing
-Plug 'lervag/vimtex'
 Plug 'reedes/vim-pencil'
 Plug 'jtratner/vim-flavored-markdown'
 function! BuildComposer(info)
@@ -150,10 +149,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 
 Plug 'reasonml-editor/vim-reason-plus'
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
-let g:syntastic_ocaml_checkers = ['merlin']
-
 
 Plug 'ElmCast/elm-vim'
 

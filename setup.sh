@@ -2,8 +2,11 @@
 # - alacritty
 # - zsh
 # - prezto
+# - fd
 # - neovim
 # - ripgrep
+# - nvm/node
+# - fd
 
 # Link the alacritty config file
 mkdir -p ~/.config/alacritty
