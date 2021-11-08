@@ -30,6 +30,7 @@ Plug 'janko-m/vim-test'
 Plug 'eugen0329/vim-esearch'
 Plug 'easymotion/vim-easymotion'
 Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'vmchale/dhall-vim'
 "Plug 'tpope/vim-projectionist'
 "Plug 'tpope/vim-dispatch'
 
@@ -85,6 +86,7 @@ let g:racer_experimental_completer = 1
 " Scala Plugs"
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = ['coc-tsserver']
+Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
 " Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=300
 " don't give |ins-completion-menu| messages.
@@ -152,6 +154,12 @@ Plug 'reasonml-editor/vim-reason-plus'
 
 Plug 'ElmCast/elm-vim'
 
+Plug 'ap/vim-css-color'
+
+" Gleam plugs
+
+Plug 'gleam-lang/gleam.vim'
+
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -176,7 +184,7 @@ nnoremap <leader>l <C-w>l
 " Completion
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " vim-test bindings
 nmap <silent> <leader>tf :TestFile<CR>
