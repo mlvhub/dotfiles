@@ -25,26 +25,21 @@ alias tc="clear && tmux clear-history"
 
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=/usr/local/bin:/usr/local/sbin:"$PATH"
-export PATH="/Users/miguellopez/kafka/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH=$PATH:~/Downloads/cmake-3.12.0-Linux-x86_64/bin
-export PATH=$PATH:$HOME/.linkerd2/bin
-export PATH=$PATH:/usr/local/lib/ruby/gems/2.7.0/bin
-export PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
 export PATH="$HOME/.fastlane/bin:$PATH"
-export PATH="~/Library/Python/3.7/bin:$PATH"
 
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-export PATH="/usr/local/go/bin:$PATH"
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
+alias cargo="cargo --vcs none"
+export PATH="$HOME/.cargo/bin:$PATH"
 export RUSTC_WRAPPER=sccache
 export RUST_SRC_PATH=/usr/local/src/rust/src
 
-alias curl='noglob curl'
+export PATH=$PATH:/snap/bin
 
-export JAVA_HOME=/Users/miguellopez/Library/Caches/Coursier/jvm/adopt@1.8.0-252/Contents/Home
-export NDK_HOME=/Users/miguellopez/Documents/android/android-ndk-r17
+export PATH=$PATH:$HOME/anaconda3/bin
+
+alias curl='noglob curl'
 
 function rnm() {
   WINDOW_NAME=$1
@@ -63,10 +58,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # opam configuration
-test -r /Users/miguellopez/.opam/opam-init/init.zsh && . /Users/miguellopez/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+test -r ~/.opam/opam-init/init.zsh && . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-autoload -U compinit
-fpath=($HOME/.bloop/zsh $fpath)
-compinit
-
-[ -f "/Users/miguellopez/.ghcup/env" ] && source "/Users/miguellopez/.ghcup/env" # ghcup-env
