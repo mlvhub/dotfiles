@@ -31,3 +31,5 @@ Thumbs.db
 # Personal
 IgnoreThis*
 package-course-release.sh
+
+**/.claude/settings.local.json

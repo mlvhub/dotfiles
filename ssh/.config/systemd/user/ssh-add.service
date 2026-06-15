@@ -1,0 +1,20 @@
+[Unit]
+Description=Load the hetzner SSH key into the agent (via ksshaskpass/KWallet)
+# Runs on the Bazzite HOST graphical session. The agent socket it targets is the
+# systemd user ssh-agent already shared into the dev distrobox, so loading the key
+# here makes it available on the host AND inside the container.
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+# Force the GUI askpass even though there's no tty. KWallet stores the passphrase
+# after the first prompt, so subsequent logins are silent.
+Environment=SSH_ASKPASS=/usr/bin/ksshaskpass
+Environment=SSH_ASKPASS_REQUIRE=force
+Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
+ExecStart=/usr/bin/ssh-add %h/.ssh/hetzner_mlvhub_id_ed25519
+
+[Install]
+WantedBy=graphical-session.target

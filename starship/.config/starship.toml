@@ -1,0 +1,65 @@
+# Starship prompt — shared by the Bazzite host and the `dev` distrobox.
+# https://starship.rs/config/
+
+add_newline = true
+command_timeout = 1000
+
+format = """
+$container\
+$directory\
+$git_branch\
+$git_status\
+$nodejs$python$rust$golang$java\
+$cmd_duration\
+$line_break\
+$character"""
+
+# Container indicator: auto-shows the distrobox name (read from /run/.containerenv).
+# Invisible on the host, where there is no container.
+[container]
+symbol = "⬢"
+format = "[$symbol $name]($style) "
+style = "bold yellow"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = "bold cyan"
+
+[git_branch]
+symbol = " "
+style = "bold purple"
+
+[git_status]
+style = "bold red"
+
+[cmd_duration]
+min_time = 2000
+format = "[ $duration]($style) "
+style = "yellow"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold green)"
+
+# Language modules: show only when relevant, keep them lightweight.
+[nodejs]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[python]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[rust]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[golang]
+symbol = " "
+format = "[$symbol($version )]($style)"
+
+[java]
+symbol = " "
+format = "[$symbol($version )]($style)"

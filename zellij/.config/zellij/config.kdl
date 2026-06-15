@@ -1,0 +1,24 @@
+// Zellij — multiplexer used inside the dev container (and host if wanted).
+// Default keybindings are kept intentionally: the status bar shows the hints,
+// which is the discoverability we're after. Docs: https://zellij.dev/documentation
+
+default_shell "fish"
+theme "catppuccin-mocha"
+
+// Session persistence: resurrect panes/tabs after a crash or detach.
+session_serialization true
+serialize_pane_viewport true
+
+// Behaviour
+mouse_mode true
+copy_on_select true
+copy_command "wl-copy"          // Wayland/KDE clipboard
+scroll_buffer_size 10000
+pane_frames true
+
+ui {
+    pane_frames {
+        rounded_corners true
+        hide_session_name false
+    }
+}
