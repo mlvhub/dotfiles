@@ -50,7 +50,7 @@ Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 Plug 'dpelle/vim-LanguageTool'
 
 " Themes
-Plug 'trevordmiller/nova-vim'
+Plug 'iammerrick/nova-vim'
 
 " Go, Golang Plugs
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
