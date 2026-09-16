@@ -1,0 +1,18 @@
+[Unit]
+Description=KRdp RDP server (real Plasma session) bound to Tailscale
+Documentation=man:krdpserver(1)
+# Capture the live Plasma/Wayland session, so wait for the graphical workspace
+# and the KDE desktop portal to be up.
+After=plasma-workspace.target plasma-xdg-desktop-portal-kde.service
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/krdp-tailscale
+Restart=on-failure
+RestartSec=5
+# Hardening: it only needs its own config dir and the network.
+NoNewPrivileges=true
+
+[Install]
+WantedBy=plasma-workspace.target

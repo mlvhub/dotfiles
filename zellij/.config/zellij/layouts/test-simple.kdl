@@ -1,0 +1,20 @@
+// Minimal test: 4 tabs, 2 stacked plain-shell panes each, NO distrobox.
+// If THIS works, the problem is the distrobox command in the real layout.
+layout {
+    tab name="ACARPG" focus=true split_direction="horizontal" {
+        pane
+        pane
+    }
+    tab name="CronTrading" split_direction="horizontal" {
+        pane
+        pane
+    }
+    tab name="StratPulse" split_direction="horizontal" {
+        pane
+        pane
+    }
+    tab name="SXM" split_direction="horizontal" {
+        pane
+        pane
+    }
+}

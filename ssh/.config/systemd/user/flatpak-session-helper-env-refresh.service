@@ -1,0 +1,10 @@
+[Unit]
+Description=Restart flatpak-session-helper so it picks up the graphical session environment
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl --user try-restart flatpak-session-helper.service
+
+[Install]
+WantedBy=graphical-session.target

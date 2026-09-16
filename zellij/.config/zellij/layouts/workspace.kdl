@@ -1,0 +1,94 @@
+// Zellij workspace — 4 project tabs, two stacked panes each (top/bottom).
+// Install to: ~/.config/zellij/layouts/workspace.kdl
+// Launch (0.44.x): zellij --new-session-with-layout workspace --session workspace
+//
+// Each pane runs an interactive host fish (`fish -i -C ...`) that auto-enters
+// the `dev` distrobox. `exit` from the container returns to the HOST shell
+// (pane stays open); `dev` re-enters; `exit` from host closes the pane.
+
+layout {
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+
+    tab name="ACARPG" focus=true split_direction="horizontal" {
+        pane name="top" cwd="/home/valdev/personal/galviagames/Acarpg" {
+            command "fish"
+        }
+        pane name="bottom" cwd="/home/valdev/personal/galviagames/Acarpg" {
+            command "fish"
+        }
+    }
+
+    tab name="CronTradingSystems" split_direction="horizontal" {
+        pane name="top" cwd="/home/valdev/personal/valquant-systems/cron-trading-systems" {
+            command "fish"
+            args "-i" "-C" "distrobox enter dev"
+        }
+        pane name="bottom" cwd="/home/valdev/personal/valquant-systems/cron-trading-systems" {
+            command "fish"
+            args "-i" "-C" "distrobox enter dev"
+        }
+    }
+
+    tab name="StratPulse" split_direction="horizontal" {
+        pane name="top" cwd="/home/valdev/personal/valquant-systems/stratpulse" {
+            command "fish"
+            args "-i" "-C" "distrobox enter dev"
+        }
+        pane name="bottom" cwd="/home/valdev/personal/valquant-systems/stratpulse" {
+            command "fish"
+            args "-i" "-C" "distrobox enter dev"
+        }
+    }
+
+    tab name="Comalito" split_direction="horizontal" {
+        pane name="top" cwd="/home/valdev/personal/puravida-software/comalito" {
+            command "fish"
+            args "-i" "-C" "distrobox enter dev"
+        }
+        pane name="bottom" cwd="/home/valdev/personal/puravida-software/comalito" {
+            command "fish"
+            args "-i" "-C" "distrobox enter dev"
+        }
+    }
+
+    tab name="Grokkr" split_direction="horizontal" {
+        pane name="top" cwd="/home/valdev/personal/puravida-software/grokkr" {
+            command "fish"
+            args "-i" "-C" "distrobox enter dev"
+        }
+        pane name="bottom" cwd="/home/valdev/personal/puravida-software/grokkr" {
+            command "fish"
+            args "-i" "-C" "distrobox enter dev"
+        }
+    }
+
+    tab name="NautilusLearning" split_direction="horizontal" {
+        pane name="top" cwd="/home/valdev/personal/quant-projects/quant-learning/nautilus-trader-exercises" {
+            command "fish"
+            args "-i" "-C" "distrobox enter dev"
+        }
+        pane name="bottom" cwd="/home/valdev/personal/quant-projects/quant-learning/nautilus-trader-exercises" {
+            command "fish"
+            args "-i" "-C" "distrobox enter dev"
+        }
+    }
+
+    tab name="SXM" split_direction="horizontal" {
+        pane name="top" cwd="/home/valdev/siriusxm/repos" {
+            command "fish"
+            args "-i" "-C" "distrobox enter dev"
+        }
+        pane name="bottom" cwd="/home/valdev/siriusxm/repos" {
+            command "fish"
+            args "-i" "-C" "distrobox enter dev"
+        }
+    }
+}

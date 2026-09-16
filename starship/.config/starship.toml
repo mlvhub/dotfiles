@@ -6,6 +6,7 @@ command_timeout = 1000
 
 format = """
 $container\
+${custom.host}\
 $directory\
 $git_branch\
 $git_status\
@@ -20,6 +21,16 @@ $character"""
 symbol = "⬢"
 format = "[$symbol $name]($style) "
 style = "bold yellow"
+
+# Host indicator: the mirror of [container]. Shows a hollow badge only on the
+# host (no /run/.containerenv), so you can see at a glance you're OUTSIDE the
+# `dev` distrobox where the Scala/JVM toolchain lives.
+[custom.host]
+when = "test ! -f /run/.containerenv"
+command = "echo host"
+format = "[⬡ $output]($style) "
+style = "dimmed red"
+shell = ["bash", "--noprofile", "--norc"]
 
 [directory]
 truncation_length = 3

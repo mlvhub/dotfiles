@@ -6,8 +6,8 @@ default_shell "fish"
 theme "catppuccin-mocha"
 
 // Session persistence: resurrect panes/tabs after a crash or detach.
-session_serialization true
-serialize_pane_viewport true
+session_serialization false
+serialize_pane_viewport false
 
 // Behaviour
 mouse_mode true
@@ -20,5 +20,20 @@ ui {
     pane_frames {
         rounded_corners true
         hide_session_name false
+    }
+}
+// Add this to ~/.config/zellij/config.kdl
+//
+// If you DON'T already have a `keybinds { }` block, paste this whole thing.
+// If you DO, just add the two `bind` lines inside your existing
+// `shared_except "locked" { }` section.
+//
+// Alt+Up / Alt+Down = move focus between panes (your top/bottom split),
+// directly, with no mode key. (Alt+Left / Alt+Right already switch tabs.)
+
+keybinds {
+    shared_except "locked" {
+        bind "Alt Up" { MoveFocus "Up"; }
+        bind "Alt Down" { MoveFocus "Down"; }
     }
 }

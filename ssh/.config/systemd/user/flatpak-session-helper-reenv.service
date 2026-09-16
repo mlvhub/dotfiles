@@ -1,0 +1,11 @@
+[Unit]
+Description=Restart flatpak-session-helper with graphical session env
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=systemctl --user restart flatpak-session-helper.service
+
+[Install]
+WantedBy=graphical-session.target

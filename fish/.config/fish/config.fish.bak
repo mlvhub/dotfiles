@@ -1,0 +1,42 @@
+# ~/.config/fish/config.fish
+# Loaded after conf.d/*.fish. Interactive-only / prompt init lives here.
+# Shared between the Bazzite host and the `dev` Arch distrobox (home is shared).
+
+status is-interactive; or exit 0
+
+# No shell greeting
+set -g fish_greeting
+
+# Prompt
+command -q starship; and starship init fish | source
+
+# Smarter cd (z / zi). Falls back silently if not installed yet.
+command -q zoxide; and zoxide init fish | source
+
+# fzf key bindings + completion (fzf >= 0.48 ships `--fish`)
+if command -q fzf
+    fzf --fish | source 2>/dev/null
+end
+# Add to ~/.config/fish/config.fish
+#
+# Bazzite symlinks /home -> /var/home, so the same directory can be spelled two
+# ways (/home/valdev/... and /var/home/valdev/...). Tools that key on the path
+# string (like Claude Code's per-project history) then see two "different"
+# projects for the same folder, fragmenting history.
+#
+# This canonicalizes $PWD to the real /var/home path whenever it starts with
+# the /home symlink — both at shell startup and on every directory change.
+
+function __canonicalize_pwd --on-variable PWD
+    status is-command-substitution; and return
+    switch "$PWD"
+        case '/home/*'
+            set -l real (realpath "$PWD" 2>/dev/null)
+            if test -n "$real"; and test "$real" != "$PWD"
+                builtin cd "$real" 2>/dev/null
+            end
+    end
+end
+
+# Run once at startup for the initial directory too.
+__canonicalize_pwd
