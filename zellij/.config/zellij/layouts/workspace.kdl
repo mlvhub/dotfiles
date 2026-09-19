@@ -1,92 +1,136 @@
-// Zellij workspace — 4 project tabs, two stacked panes each (top/bottom).
+// Zellij workspace — 7 project tabs.
 // Install to: ~/.config/zellij/layouts/workspace.kdl
 // Launch (0.44.x): zellij --new-session-with-layout workspace --session workspace
 //
-// Each pane runs an interactive host fish (`fish -i -C ...`) that auto-enters
-// the `dev` distrobox. `exit` from the container returns to the HOST shell
-// (pane stays open); `dev` re-enters; `exit` from host closes the pane.
+// Per-tab shape: vertical split 50/50.
+//   Left column  (stacked 50/50): CC (top) + SHELL (bottom)
+//   Right column (full height):   EDITOR
+//
+// Panes run an interactive host fish (`fish -i -C ...`) that auto-enters the
+// `dev` distrobox. `exit` from the container returns to the HOST shell (pane
+// stays open); `dev` re-enters; `exit` from host closes the pane.
+//
+// ACARPG's CC and SHELL panes stay on the HOST deliberately (no distrobox).
+// Its EDITOR pane enters `dev` like every other editor pane.
 
 layout {
     default_tab_template {
-        pane size=1 borderless=true {
-            plugin location="zellij:tab-bar"
-        }
+        pane size=1 borderless=true { plugin location="zellij:compact-bar"; }
         children
-        pane size=1 borderless=true {
-            plugin location="zellij:status-bar"
-        }
     }
 
-    tab name="ACARPG" focus=true split_direction="horizontal" {
-        pane name="top" cwd="/home/valdev/personal/galviagames/Acarpg" {
-            command "fish"
+    tab name="ACARPG" focus=true split_direction="vertical" {
+        pane split_direction="horizontal" {
+            pane name="CC" cwd="/home/valdev/personal/galviagames/Acarpg" {
+                command "fish"
+            }
+            pane name="SHELL" cwd="/home/valdev/personal/galviagames/Acarpg" {
+                command "fish"
+            }
         }
-        pane name="bottom" cwd="/home/valdev/personal/galviagames/Acarpg" {
-            command "fish"
-        }
-    }
-
-    tab name="CronTradingSystems" split_direction="horizontal" {
-        pane name="top" cwd="/home/valdev/personal/valquant-systems/cron-trading-systems" {
-            command "fish"
-            args "-i" "-C" "distrobox enter dev"
-        }
-        pane name="bottom" cwd="/home/valdev/personal/valquant-systems/cron-trading-systems" {
+        pane name="EDITOR" cwd="/home/valdev/personal/galviagames/Acarpg" {
             command "fish"
             args "-i" "-C" "distrobox enter dev"
         }
     }
 
-    tab name="StratPulse" split_direction="horizontal" {
-        pane name="top" cwd="/home/valdev/personal/valquant-systems/stratpulse" {
-            command "fish"
-            args "-i" "-C" "distrobox enter dev"
+    tab name="CronTradingSystems" split_direction="vertical" {
+        pane split_direction="horizontal" {
+            pane name="CC" cwd="/home/valdev/personal/valquant-systems/cron-trading-systems" {
+                command "fish"
+                args "-i" "-C" "distrobox enter dev"
+            }
+            pane name="SHELL" cwd="/home/valdev/personal/valquant-systems/cron-trading-systems" {
+                command "fish"
+                args "-i" "-C" "distrobox enter dev"
+            }
         }
-        pane name="bottom" cwd="/home/valdev/personal/valquant-systems/stratpulse" {
-            command "fish"
-            args "-i" "-C" "distrobox enter dev"
-        }
-    }
-
-    tab name="Comalito" split_direction="horizontal" {
-        pane name="top" cwd="/home/valdev/personal/puravida-software/comalito" {
-            command "fish"
-            args "-i" "-C" "distrobox enter dev"
-        }
-        pane name="bottom" cwd="/home/valdev/personal/puravida-software/comalito" {
+        pane name="EDITOR" cwd="/home/valdev/personal/valquant-systems/cron-trading-systems" {
             command "fish"
             args "-i" "-C" "distrobox enter dev"
         }
     }
 
-    tab name="Grokkr" split_direction="horizontal" {
-        pane name="top" cwd="/home/valdev/personal/puravida-software/grokkr" {
-            command "fish"
-            args "-i" "-C" "distrobox enter dev"
+    tab name="StratPulse" split_direction="vertical" {
+        pane split_direction="horizontal" {
+            pane name="CC" cwd="/home/valdev/personal/valquant-systems/stratpulse" {
+                command "fish"
+                args "-i" "-C" "distrobox enter dev"
+            }
+            pane name="SHELL" cwd="/home/valdev/personal/valquant-systems/stratpulse" {
+                command "fish"
+                args "-i" "-C" "distrobox enter dev"
+            }
         }
-        pane name="bottom" cwd="/home/valdev/personal/puravida-software/grokkr" {
-            command "fish"
-            args "-i" "-C" "distrobox enter dev"
-        }
-    }
-
-    tab name="NautilusLearning" split_direction="horizontal" {
-        pane name="top" cwd="/home/valdev/personal/quant-projects/quant-learning/nautilus-trader-exercises" {
-            command "fish"
-            args "-i" "-C" "distrobox enter dev"
-        }
-        pane name="bottom" cwd="/home/valdev/personal/quant-projects/quant-learning/nautilus-trader-exercises" {
+        pane name="EDITOR" cwd="/home/valdev/personal/valquant-systems/stratpulse" {
             command "fish"
             args "-i" "-C" "distrobox enter dev"
         }
     }
 
-    tab name="SXM" split_direction="horizontal" {
-        pane name="top" cwd="/home/valdev/siriusxm/repos" {
+    tab name="Comalito" split_direction="vertical" {
+        pane split_direction="horizontal" {
+            pane name="CC" cwd="/home/valdev/personal/puravida-software/comalito" {
+                command "fish"
+                args "-i" "-C" "distrobox enter dev"
+            }
+            pane name="SHELL" cwd="/home/valdev/personal/puravida-software/comalito" {
+                command "fish"
+                args "-i" "-C" "distrobox enter dev"
+            }
+        }
+        pane name="EDITOR" cwd="/home/valdev/personal/puravida-software/comalito" {
             command "fish"
             args "-i" "-C" "distrobox enter dev"
         }
-        pane name="bottom" cwd="/home/valdev/siriusxm/repos" {
+    }
+
+    tab name="Grokkr" split_direction="vertical" {
+        pane split_direction="horizontal" {
+            pane name="CC" cwd="/home/valdev/personal/puravida-software/grokkr" {
+                command "fish"
+                args "-i" "-C" "distrobox enter dev"
+            }
+            pane name="SHELL" cwd="/home/valdev/personal/puravida-software/grokkr" {
+                command "fish"
+                args "-i" "-C" "distrobox enter dev"
+            }
+        }
+        pane name="EDITOR" cwd="/home/valdev/personal/puravida-software/grokkr" {
+            command "fish"
+            args "-i" "-C" "distrobox enter dev"
+        }
+    }
+
+    tab name="NautilusLearning" split_direction="vertical" {
+        pane split_direction="horizontal" {
+            pane name="CC" cwd="/home/valdev/personal/quant-projects/quant-learning/nautilus-trader-exercises" {
+                command "fish"
+                args "-i" "-C" "distrobox enter dev"
+            }
+            pane name="SHELL" cwd="/home/valdev/personal/quant-projects/quant-learning/nautilus-trader-exercises" {
+                command "fish"
+                args "-i" "-C" "distrobox enter dev"
+            }
+        }
+        pane name="EDITOR" cwd="/home/valdev/personal/quant-projects/quant-learning/nautilus-trader-exercises" {
+            command "fish"
+            args "-i" "-C" "distrobox enter dev"
+        }
+    }
+
+    tab name="SXM" split_direction="vertical" {
+        pane split_direction="horizontal" {
+            pane name="CC" cwd="/home/valdev/siriusxm/repos" {
+                command "fish"
+                args "-i" "-C" "distrobox enter dev"
+            }
+            pane name="SHELL" cwd="/home/valdev/siriusxm/repos" {
+                command "fish"
+                args "-i" "-C" "distrobox enter dev"
+            }
+        }
+        pane name="EDITOR" cwd="/home/valdev/siriusxm/repos" {
             command "fish"
             args "-i" "-C" "distrobox enter dev"
         }

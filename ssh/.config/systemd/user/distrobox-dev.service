@@ -1,0 +1,8 @@
+[Unit]
+Description=Warm dev distrobox
+After=default.target
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/distrobox enter dev -- true
+[Install]
+WantedBy=default.target

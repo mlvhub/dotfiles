@@ -1,20 +1,18 @@
 // Zellij — multiplexer used inside the dev container (and host if wanted).
-// Default keybindings are kept intentionally: the status bar shows the hints,
-// which is the discoverability we're after. Docs: https://zellij.dev/documentation
+// Colliding Ctrl chords are moved to Alt so Neovim keeps Ctrl p/o/n/t/h.
+// The status bar reads bindings from this file, so hints stay accurate.
 
 default_shell "fish"
 theme "catppuccin-mocha"
 
-// Session persistence: resurrect panes/tabs after a crash or detach.
 session_serialization false
 serialize_pane_viewport false
 
-// Behaviour
 mouse_mode true
 copy_on_select true
-copy_command "wl-copy"          // Wayland/KDE clipboard
 scroll_buffer_size 10000
 pane_frames true
+scrollback_editor "nvim"
 
 ui {
     pane_frames {
@@ -22,18 +20,43 @@ ui {
         hide_session_name false
     }
 }
-// Add this to ~/.config/zellij/config.kdl
-//
-// If you DON'T already have a `keybinds { }` block, paste this whole thing.
-// If you DO, just add the two `bind` lines inside your existing
-// `shared_except "locked" { }` section.
-//
-// Alt+Up / Alt+Down = move focus between panes (your top/bottom split),
-// directly, with no mode key. (Alt+Left / Alt+Right already switch tabs.)
 
 keybinds {
     shared_except "locked" {
-        bind "Alt Up" { MoveFocus "Up"; }
+        unbind "Ctrl p" "Ctrl t" "Ctrl n" "Ctrl o" "Ctrl h"
+        bind "Alt Up"   { MoveFocus "Up"; }
         bind "Alt Down" { MoveFocus "Down"; }
+        bind "Alt Left"  { MoveFocus "Left"; }
+        bind "Alt Right" { MoveFocus "Right"; }
+        bind "Alt {" { GoToPreviousTab; }
+        bind "Alt }" { GoToNextTab; }
+    }
+    normal {
+        bind "Alt p" { SwitchToMode "Pane"; }
+        bind "Alt t" { SwitchToMode "Tab"; }
+        bind "Alt r" { SwitchToMode "Resize"; }
+        bind "Alt s" { SwitchToMode "Session"; }
+        bind "Alt m" { SwitchToMode "Move"; }
+        bind "Alt z" { ToggleFocusFullscreen; }
+    }
+    pane {
+        unbind "Ctrl p"
+        bind "Alt p" "Esc" { SwitchToMode "Normal"; }
+    }
+    tab {
+        unbind "Ctrl t"
+        bind "Alt t" "Esc" { SwitchToMode "Normal"; }
+    }
+    resize {
+        unbind "Ctrl n"
+        bind "Alt r" "Esc" { SwitchToMode "Normal"; }
+    }
+    session {
+        unbind "Ctrl o"
+        bind "Alt s" "Esc" { SwitchToMode "Normal"; }
+    }
+    move {
+        unbind "Ctrl h"
+        bind "Alt m" "Esc" { SwitchToMode "Normal"; }
     }
 }
